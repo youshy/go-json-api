@@ -23,3 +23,5 @@ And then run the `.exe` file
 ## Based on
 
 Based on this amazing tutorial [here](https://thenewstack.io/make-a-restful-json-api-go/).
+
+Starting version of this API is on `basic-api` branch.
