@@ -4,38 +4,38 @@ import "fmt"
 
 var currentId int
 
-var todos Todos
+var effects Effects
 
 // Give us some seed data
 func init() {
-	RepoCreateTodo(Todo{Name: "Rewrite these beautiful handlers"})
-	RepoCreateTodo(Todo{Name: "Use my own data"})
+	RepoCreateEffect(Effect{Brand: "MXR", Name: "Blue Box", Type: "Fuzz"})
+	RepoCreateEffect(Effect{Brand: "Way Huge", Name: "Swollen Pickle", Type: "Fuzz"})
 }
 
-func RepoFindTodo(id int) Todo {
-	for _, t := range todos {
+func RepoFindEffect(id int) Effect {
+	for _, t := range effects {
 		if t.Id == id {
 			return t
 		}
 	}
-	// return empty Todo if not found
-	return Todo{}
+	// return empty Effect if not found
+	return Effect{}
 }
 
-//this is bad, I don't think it passes race condtions
-func RepoCreateTodo(t Todo) Todo {
+// TODO: Google if that's production-ready
+func RepoCreateEffect(t Effect) Effect {
 	currentId += 1
 	t.Id = currentId
-	todos = append(todos, t)
+	effects = append(effects, t)
 	return t
 }
 
-func RepoDestroyTodo(id int) error {
-	for i, t := range todos {
+func RepoDeleteEffect(id int) error {
+	for i, t := range effects {
 		if t.Id == id {
-			todos = append(todos[:i], todos[i+1:]...)
+			effects = append(effects[:i], effects[i+1:]...)
 			return nil
 		}
 	}
-	return fmt.Errorf("Could not find Todo with id of %d to delete", id)
+	return fmt.Errorf("Could not find Effect with id of %d to delete", id)
 }

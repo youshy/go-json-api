@@ -14,11 +14,11 @@ And then run the `.exe` file
 
 `GET /` - Welcome page
 
-`GET /todos` - Get all To-Dos
+`GET /effects` - Get all effects
 
-`POST /todos` - Post a new To-Do
+`POST /effects` - Post a new effect
 
-`GET /todos/:todoId` - Get todo of :id
+`GET /effects/:effectId` - Get effect of :id
 
 ## Based on
 
